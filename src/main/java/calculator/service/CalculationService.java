@@ -9,11 +9,9 @@ import java.util.List;
 public class CalculationService {
 
     private final InputHandler inputHandler;
-    private final OutputView outputView;
 
-    public CalculationService(InputHandler inputHandler, OutputView outputView) {
+    public CalculationService(InputHandler inputHandler) {
         this.inputHandler = inputHandler;
-        this.outputView = outputView;
     }
 
     public int calculate() {
