@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 public class InputHandler {
 
-    private static final String CUSTOM_DELIMITER_REGEX = "^//([^0-9\\s]+)\\n";
+    private static final String CUSTOM_DELIMITER_REGEX = "^//([^0-9\\s]+)\n";
     private static final String VALIDATION_REGEX = "^\\d+([,:\\1]\\d+)*$";
     private static final String DELIMITER_REGEX = "[,:\\1]";
 
@@ -24,7 +24,7 @@ public class InputHandler {
     }
 
     public List<Integer> getNumber() {
-        inputString = inputView.printStringInputMessage();
+        inputString = inputView.printStringInputMessage().replace("\\n", "\n");
         String customDelimiter = getCustomDelimiter(inputString);
         return extractNumbers(customDelimiter);
     }
@@ -33,7 +33,7 @@ public class InputHandler {
         Pattern pattern = Pattern.compile(CUSTOM_DELIMITER_REGEX);
         Matcher matcher = pattern.matcher(input);
 
-        if (matcher.matches()) {
+        if (matcher.find()) {
             String customDelimiter = matcher.group(1);
             this.inputString = input.replaceFirst(CUSTOM_DELIMITER_REGEX, "");
             return customDelimiter;
