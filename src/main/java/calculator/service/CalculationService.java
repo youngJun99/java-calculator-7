@@ -16,10 +16,9 @@ public class CalculationService {
         this.outputView = outputView;
     }
 
-    public void calculate() {
+    public int calculate() {
         List<Integer> inputNumber = inputHandler.getNumber();
         Numbers numbers = new Numbers(inputNumber);
-        int answer = numbers.getSum();
-        outputView.printResult(answer);
+        return numbers.getSum();
     }
 }
